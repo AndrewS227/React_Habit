@@ -1,6 +1,6 @@
 export function HabitList(){
-    const habits = [{id: 1, name: "Hi"},
-                    {id: 2, name: "Bye"}
+    const habits = [{id: "asd", name: "Hi"},
+                    {id: "asdd", name: "Bye"}
     ]
 
     if (habits.length === 0){
@@ -9,7 +9,15 @@ export function HabitList(){
     return <div className="flex flex-col gap-3">
         {/* map converts array to jsx which renders out on the page! */}
         {habits.map(habit => (
-            <h1 key={habit.id}>{habit.name}</h1>
+            <HabitItem key={habit.id} habit={habit}/>
         ))}
     </div>
+}
+
+type HabitItemProps = {
+    habit: {id: string, name: string}
+}
+
+function HabitItem({habit}: HabitItemProps){
+    return <h1>{habit.name}</h1>
 }
