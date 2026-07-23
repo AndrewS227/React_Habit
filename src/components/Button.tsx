@@ -1,4 +1,5 @@
 import type {ComponentProps} from "react"
+import { twMerge } from "tailwind-merge"
 
 // props for custom use
 type ButtonProps = {
@@ -21,11 +22,15 @@ export function Button(props: ButtonProps){
 }
 
 // children props are always available for any custom component!
-export function Button2({variant = "primary", ...props}: ButtonProps2){
+export function Button2({variant = "primary", className, ...props}: ButtonProps2){
     return (
     <button
     {...props}
-     className={`${getVariantStyles(variant)} bg-indigo-900 hover:bg-indigo-800 transition-colors rounded px-2 py-1 disabled:opacity-30 disabled:cursor-not-allowed`}
+     className={twMerge(
+        "bg-indigo-900 hover:bg-indigo-800 transition-colors rounded px-2 py-1 disabled:opacity-30 disabled:cursor-not-allowed",
+        getVariantStyles(variant),
+        className
+        )} // applies the styles in the first param. if it clashes w. the variant, variant gets applies. lastly, className overwrites everything if used
     />
     )
 }
