@@ -31,11 +31,13 @@ function HabitItem({habit}: HabitItemProps){
                 <span className="font-medium">{habit.name}</span>
                 <span className="text-sm text-cyan-400">👻 3</span>
             </div>
-            <Button2 variant="ghost-destructive">Delete</Button2>
+            <Button2 variant="ghost-destructive" className="text-sm">
+                Delete
+            </Button2>
         </div>
         <div className="flex gap-1.5">
             {visibleDates.map(date => (
-                <Button2 key={date.toISOString()} disabled={isFuture(date)}>
+                <Button2 className="flex flex-1 flex-col items-center gap-0.5 rounded-lg text-xs" key={date.toISOString()} disabled={isFuture(date)}>
                     <span className="font-medium">{format(date, "EEE")}</span>
                     <span>{format(date, "d")}</span>
                 </Button2>
